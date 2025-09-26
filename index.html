@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarun Karnati - Full Stack Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            // Enable dark mode based on the 'dark' class on the html element
+            darkMode: 'class', 
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-charcoal': 'var(--color-primary-charcoal)',
+                        'accent-ochre': 'var(--color-accent-ochre)',
+                        'bg-light': 'var(--color-bg-light)',
+                        'bg-soft': 'var(--color-bg-soft)',
+                        'rule-line': 'var(--color-rule-line)',
+                        'text-default': 'var(--color-text-default)',
+                        'text-secondary': 'var(--color-text-secondary)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'editorial-subtle': '0 1px 3px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* CSS Variables for Light/Dark Theme Switching */
+        :root {
+            /* Light Theme Defaults */
+            --color-primary-charcoal: #1A1A1A;
+            --color-accent-ochre: #FACC15;
+            --color-bg-light: #FFFFFF;
+            --color-bg-soft: #F5F5F7;
+            --color-rule-line: #E5E5E5;
+            --color-text-default: #1A1A1A;
+            --color-text-secondary: #4B5563;
+        }
+
+        html.dark {
+            /* Dark Mode Variables */
+            --color-primary-charcoal: #FACC15;
+            --color-accent-ochre: #FACC15;
+            --color-bg-light: #1A1A1A;
+            --color-bg-soft: #282828;
+            --color-rule-line: #444444;
+            --color-text-default: #F5F5F5;
+            --color-text-secondary: #AAAAAA;
+        }
+
+        /* Base styles */
+        body {
+            background-color: var(--color-bg-light);
+            color: var(--color-text-default);
+            transition: background-color 0.3s, color 0.3s;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Custom Scroll Reveal */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Modal specific styles */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-bg-light/95 backdrop-blur-sm border-b border-rule-line shadow-editorial-subtle">
+        <div class="container mx-auto px-4 lg:px-16 flex justify-between items-center py-4">
+            <a href="#" class="text-2xl font-black tracking-tight text-primary-charcoal">
+                T<span class="text-accent-ochre">K</span>.
+            </a>
+            <nav class="hidden md:flex space-x-10 text-sm font-semibold uppercase">
+                <a href="#about" class="text-text-default hover:text-accent-ochre transition duration-200">About</a>
+                <a href="#skills" class="text-text-default hover:text-accent-ochre transition duration-200">Expertise</a>
+                <a href="#projects" class="text-text-default hover:text-accent-ochre transition duration-200">Work</a>
+                <a href="#timeline" class="text-text-default hover:text-accent-ochre transition duration-200">Timeline</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button id="dark-mode-toggle" class="text-text-default text-xl hover:text-accent-ochre transition duration-200 focus:outline-none">
+                    <i class="fas fa-sun" id="sun-icon"></i>
+                    <i class="fas fa-moon hidden" id="moon-icon"></i>
+                </button>
+                <a href="mailto:tarunk1109@gmail.com" class="hidden lg:inline-block bg-primary-charcoal text-white px-5 py-2 text-sm font-bold tracking-wider hover:bg-accent-ochre hover:text-primary-charcoal transition duration-300">
+                    CONTACT
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        
+        <section class="min-h-[75vh] flex items-center border-b border-rule-line bg-bg-light">
+            <div class="container mx-auto px-4 lg:px-16 grid grid-cols-1 lg:grid-cols-12 gap-6 py-24">
+                <div class="lg:col-span-8 pr-4 border-r border-rule-line scroll-reveal">
+                    <h1 class="text-7xl sm:text-8xl lg:text-[7rem] font-black leading-none text-primary-charcoal tracking-tighter">
+                        TARUN <br> KARNATI.
+                    </h1>
+                </div>
+                <div class="lg:col-span-4 pl-4 flex flex-col justify-end scroll-reveal" style="transition-delay: 100ms;">
+                    <p class="text-lg font-light text-text-secondary mb-8">
+                        Aspiring Full Stack Developer with a strong foundation in Java, Spring Boot, and various web technologies. My career objective is to build impactful, user-centric applications.
+                    </p>
+                    <div class="border-t border-b border-rule-line py-3 flex justify-between items-center text-sm font-semibold text-text-default">
+                        <span>Toronto, Canada</span>
+                        <a href="https://linkedin.com/in/tarun-karnati-84a95623b" target="_blank" class="text-accent-ochre hover:text-primary-charcoal transition duration-200">LinkedIn <i class="fas fa-arrow-right text-xs ml-1"></i></a>
+                    </div>
+                     <div class="mt-8 scroll-reveal" style="transition-delay: 200ms;">
+                        <a href="resume.pdf" download="Tarun_Karnati_Resume.pdf" class="w-full inline-flex justify-center items-center bg-accent-ochre text-gray-900 px-6 py-3 text-base font-bold tracking-wider rounded-md hover:bg-opacity-80 transition duration-300">
+                            <i class="fas fa-download mr-3"></i> DOWNLOAD RESUME (PDF)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 lg:py-24 bg-bg-soft border-b border-rule-line">
+            <div class="container mx-auto px-4 lg:px-16 grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <div class="col-span-1 border-b lg:border-r lg:border-b-0 border-rule-line pb-4 lg:pb-0 scroll-reveal">
+                    <span class="text-xs font-semibold uppercase text-accent-ochre tracking-widest block mb-2">SECTION 01</span>
+                    <h2 class="text-3xl font-black text-primary-charcoal">
+                        The Profile.
+                    </h2>
+                </div>
+                <div class="col-span-3 text-lg text-text-secondary leading-relaxed scroll-reveal" style="transition-delay: 100ms;">
+                    <p class="mb-4">
+                        My name is Tarun Karnati, and I am an aspiring Full Stack Developer. My primary objective is to build impactful, user-centric applications and grow within a dynamic environment where I can contribute to innovative tech solutions.
+                    </p>
+                    <p>
+                        I focus on full-stack development, combining robust backend engineering in <span class="font-semibold">Java and Spring Boot</span> with responsive frontend design using HTML, CSS, and JavaScript. I apply best practices like MVC Architecture, User Authentication, and detailed error handling to ensure high-quality, maintainable systems.
+                    </p>
+                    <div class="mt-6 border-t border-rule-line pt-4">
+                        <p class="text-sm font-bold text-primary-charcoal">Contact & Links:</p>
+                        <ul class="text-sm mt-1 space-y-1">
+                            <li><i class="fas fa-envelope text-accent-ochre mr-2"></i> Email: tarunk1109@gmail.com</li>
+                            <li><i class="fab fa-linkedin-in text-accent-ochre mr-2"></i> <a href="https://linkedin.com/in/tarun-karnati-84a95623b" target="_blank" class="hover:underline">linkedin.com/in/tarun-karnati-84a95623b</a></li>
+                            <li><i class="fab fa-github text-accent-ochre mr-2"></i> <a href="https://github.com/Tarunk1109" target="_blank" class="hover:underline">github.com/Tarunk1109</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills" class="py-20 lg:py-24 bg-bg-light border-b border-rule-line">
+            <div class="container mx-auto lg:px-16">
+                <div class="text-center mb-12 scroll-reveal">
+                    <span class="text-xs font-semibold uppercase text-accent-ochre tracking-widest block mb-2">SECTION 02</span>
+                    <h2 class="text-4xl font-black text-primary-charcoal">
+                        The Technical Matrix.
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 divide-x divide-rule-line border border-rule-line scroll-reveal" style="transition-delay: 100ms;">
+                    
+                    <div class="p-8 hover:bg-bg-soft transition duration-300">
+                        <h3 class="text-xl font-bold text-primary-charcoal mb-4 flex items-center">
+                            <i class="fas fa-code text-accent-ochre mr-3"></i> CORE LANGUAGES
+                        </h3>
+                        <ul class="text-text-secondary space-y-2 text-sm border-t border-rule-line pt-4">
+                            <li><span class="font-semibold">Java</span>, <span class="font-semibold">Python</span>, C</li>
+                            <li><b>JavaScript, HTML5, CSS3, SQL</b></li>
+                            <li><b>Bash (Basic)</b></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-8 hover:bg-bg-soft transition duration-300">
+                        <h3 class="text-xl font-bold text-primary-charcoal mb-4 flex items-center">
+                            <i class="fas fa-database text-accent-ochre mr-3"></i> DATA & FRAMEWORKS
+                        </h3>
+                        <ul class="text-text-secondary space-y-2 text-sm border-t border-rule-line pt-4">
+                            <li><span class="font-semibold">Spring Boot</span><b>, Node.js (Beginner)</b></li>
+                            <li><span class="font-semibold">MongoDB</span>, <span class="font-semibold">MySQL</span></li>
+                            <li><span class="font-semibold">Git</span><b> & GitHub</b></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-8 hover:bg-bg-soft transition duration-300">
+                        <h3 class="text-xl font-bold text-primary-charcoal mb-4 flex items-center">
+                            <i class="fas fa-cloud-upload-alt text-accent-ochre mr-3"></i> CONCEPTS & DEPLOYMENT
+                        </h3>
+                        <ul class="text-text-secondary space-y-2 text-sm border-t border-rule-line pt-4">
+                            <li><b>OOP, MVC Architecture</b></li>
+                            <li><b>RESTful APIs, Responsive Design</b></li>
+                            <li><b>User Auth, CRUD, Data Filtering</b></li>
+                            <li><b>Netlify, Heroku (Basic), Postman</b></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-20 lg:py-24 bg-bg-soft border-b border-rule-line">
+            <div class="container mx-auto lg:px-16">
+                <div class="text-center mb-12 scroll-reveal">
+                    <span class="text-xs font-semibold uppercase text-accent-ochre tracking-widest block mb-2">SECTION 03</span>
+                    <h2 class="text-4xl font-black text-primary-charcoal">
+                        My Projects.
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <div class="bg-bg-light p-8 border border-rule-line hover:border-accent-ochre transition-all duration-300 shadow-editorial-subtle scroll-reveal">
+                        <p class="text-sm font-semibold text-accent-ochre mb-1 uppercase">Full-Stack Application</p>
+                        <h3 class="text-2xl font-black text-primary-charcoal mb-4">PERKPAL - Personalized Discounts</h3>
+                        <p class="text-text-secondary mb-6 leading-relaxed">
+                            Built a full-stack personalized discounts web app using Spring Boot and MongoDB, delivering targeted offers to specific communities.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-4">
+                            <span class="text-xs font-medium bg-rule-line text-text-default px-3 py-1 rounded">Spring Boot</span>
+                            <span class="text-xs font-medium bg-rule-line text-text-default px-3 py-1 rounded">MongoDB</span>
+                        </div>
+                        <button onclick="openModal('perkpal')" class="text-primary-charcoal font-bold text-base flex items-center hover:text-accent-ochre transition duration-200 focus:outline-none">
+                            View Full Description <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="bg-bg-light p-8 border border-rule-line hover:border-accent-ochre transition-all duration-300 shadow-editorial-subtle scroll-reveal" style="transition-delay: 100ms;">
+                        <p class="text-sm font-semibold text-accent-ochre mb-1 uppercase">Embedded System & Leadership</p>
+                        <h3 class="text-2xl font-black text-primary-charcoal mb-4">IoT Women's Safety Device</h3>
+                        <p class="text-text-secondary mb-6 leading-relaxed">
+                            Led a team of four to design and develop a tracking and alert system using a Raspberry Pi Pico. Demonstrates Python scripting and real-time systems integration.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-4">
+                            <span class="text-xs font-medium bg-rule-line text-text-default px-3 py-1 rounded">Raspberry Pi</span>
+                            <span class="text-xs font-medium bg-rule-line text-text-default px-3 py-1 rounded">Python</span>
+                        </div>
+                        </div>
+
+                    <div class="bg-bg-light p-8 border border-rule-line hover:border-accent-ochre transition-all duration-300 shadow-editorial-subtle scroll-reveal" style="transition-delay: 200ms;">
+                        <p class="text-sm font-semibold text-accent-ochre mb-1 uppercase">NLP & Machine Learning</p>
+                        <h3 class="text-2xl font-black text-primary-charcoal mb-4">PUBLIC RELATIONSHIPS using NLP</h3>
+                        <p class="text-text-secondary mb-6 leading-relaxed">
+                            Utilized NLP and ML (Logistic Regression, Naive Bayes) to analyze sentiments from product reviews, providing valuable business insights into public opinion.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-4">
+                            <span class="text-xs font-medium bg-rule-line text-text-default px-3 py-1 rounded">Python</span>
+                            <span class="text-xs font-medium bg-rule-line text-text-default px-3 py-1 rounded">NLP/ML</span>
+                        </div>
+                        <a href="http://ijcrt.org/viewfull.php?&p_id=IJCRT2405210" target="_blank" class="text-primary-charcoal font-bold text-base flex items-center hover:text-accent-ochre transition duration-200">
+                            View Publication <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline" class="py-20 lg:py-24 bg-bg-light">
+            <div class="container mx-auto lg:px-16">
+                <div class="text-center mb-12 scroll-reveal">
+                    <span class="text-xs font-semibold uppercase text-accent-ochre tracking-widest block mb-2">SECTION 04</span>
+                    <h2 class="text-4xl font-black text-primary-charcoal">
+                        Timeline & Milestones.
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 divide-x divide-rule-line border-t border-rule-line border-b-0">
+                    
+                    <div class="py-8 px-4 md:px-8 border-b md:border-b-0 border-rule-line">
+                        <h3 class="text-2xl font-black text-primary-charcoal mb-6 border-b-2 border-accent-ochre inline-block pb-1 scroll-reveal">EDUCATION</h3>
+                        <div class="space-y-6">
+                            <div class="scroll-reveal" style="transition-delay: 100ms;">
+                                <p class="text-sm font-semibold text-accent-ochre">2025 - 2026 (Expected)</p>
+                                <h4 class="text-xl font-bold text-primary-charcoal mt-1">Information Technology Solutions</h4>
+                                <p class="text-text-secondary text-base">Humber College, Toronto</p>
+                                <p class="text-xs italic text-text-secondary/70">Dean's Honour List - Semester 1, 2025</p>
+                            </div>
+                            <div class="scroll-reveal" style="transition-delay: 200ms;">
+                                <p class="text-sm font-semibold text-accent-ochre">2020 - 2024</p>
+                                <h4 class="text-xl font-bold text-primary-charcoal mt-1">Bachelor of Technology - Computer Science</h4>
+                                <p class="text-text-secondary text-base">SRK Institute of Technology, India (CGPA 7.4)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="py-8 px-4 md:px-8 border-b md:border-b-0 border-rule-line">
+                        <h3 class="text-2xl font-black text-primary-charcoal mb-6 border-b-2 border-accent-ochre inline-block pb-1 scroll-reveal" style="transition-delay: 300ms;">CERTIFICATIONS</h3>
+                        <div class="space-y-6">
+                            
+                            <div class="scroll-reveal" style="transition-delay: 400ms;">
+                                <p class="text-sm font-semibold text-accent-ochre">DOCKER & LINKEDIN</p>
+                                <h4 class="text-xl font-bold text-primary-charcoal mt-1">
+                                    <a href="https://www.linkedin.com/learning/certificates/eb103cef361f6d528bfa297c6d730fb6579041cb4dc626e91377a9269aca1e39?u=2218586" target="_blank" class="hover:underline">Docker Foundations Professional</a>
+                                </h4>
+                            </div>
+
+                            <div class="scroll-reveal" style="transition-delay: 500ms;">
+                                <p class="text-sm font-semibold text-accent-ochre">MICROSOFT & LINKEDIN</p>
+                                <h4 class="text-xl font-bold text-primary-charcoal mt-1">
+                                    <a href="https://www.linkedin.com/learning/certificates/0a5fb95f1f2ab199e4ba32cbd91c56f8d8ba092a44026604ef8aa4b12d11a428?u=2218586" target="_blank" class="hover:underline">Career Essentials in Software Development</a>
+                                </h4>
+                            </div>
+
+                            <div class="scroll-reveal" style="transition-delay: 600ms;">
+                                <p class="text-sm font-semibold text-accent-ochre">CISCO NETWORKING ACADEMY</p>
+                                <h4 class="text-xl font-bold text-primary-charcoal mt-1">PCAP: Programming Essentials in Python</h4>
+                            </div>
+                            
+                            <div class="scroll-reveal" style="transition-delay: 700ms;">
+                                <p class="text-sm font-semibold text-accent-ochre">COURSERA</p>
+                                <h4 class="text-xl font-bold text-primary-charcoal mt-1">
+                                    <a href="https://www.coursera.org/account/accomplishments/verify/DHL7Z3VDD96C?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=pdf_header_button&utm_product=course" target="_blank" class="hover:underline">AI for Everyone</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 divide-x divide-rule-line border border-rule-line border-t-0">
+                    
+                    <div class="py-8 px-4 md:px-8 border-b md:border-b-0 border-rule-line">
+                        <h3 class="text-2xl font-black text-primary-charcoal mb-6 border-b-2 border-accent-ochre inline-block pb-1 scroll-reveal">PUBLICATIONS</h3>
+                        <div class="space-y-6">
+                            <div class="scroll-reveal" style="transition-delay: 800ms;">
+                                <p class="text-sm font-semibold text-accent-ochre">SPRINGER PUBLICATION (2023)</p>
+                                <h4 class="text-xl font-bold text-primary-charcoal mt-1">Fabric Defect Segmentation (DCNN)</h4>
+                                <p class="text-text-secondary text-base">From IPDIMS 2023 Conference.</p>
+                            </div>
+                            <div class="scroll-reveal" style="transition-delay: 900ms;">
+                                <p class="text-sm font-semibold text-accent-ochre">IJIRT JOURNAL (2024)</p>
+                                <h4 class="text-xl font-bold text-primary-charcoal mt-1">
+                                    <a href="http://ijcrt.org/viewfull.php?&p_id=IJCRT2405210" target="_blank" class="hover:underline">Public Relationships using NLP and ML</a>
+                                </h4>
+                                <p class="text-text-secondary text-base">Co-authored research on sentiment analysis.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="py-8 px-4 md:px-8 border-b md:border-b-0 border-rule-line">
+                        <h3 class="text-2xl font-black text-primary-charcoal mb-6 border-b-2 border-accent-ochre inline-block pb-1 scroll-reveal" style="transition-delay: 1000ms;">PRACTICAL EXPERIENCE</h3>
+                        <div class="space-y-6">
+                            <div class="scroll-reveal" style="transition-delay: 1100ms;">
+                                <p class="text-sm font-semibold text-accent-ochre">VIRTUAL INTERNSHIPS (AWS)</p>
+                                <h4 class="text-xl font-bold text-primary-charcoal mt-1">Cloud Architecture & Data Analytics</h4>
+                                <p class="text-text-secondary text-base">AWS via AICTE GOVT OF INDIA. Focused on cloud foundations.</p>
+                            </div>
+                            
+                            <div class="scroll-reveal" style="transition-delay: 1200ms;">
+                                <p class="text-sm font-semibold text-accent-ochre">WORKSHOP: IOT SYSTEM DESIGN</p>
+                                <h4 class="text-xl font-bold text-primary-charcoal mt-1">IoT-based Women's Safety Device</h4>
+                            </div>
+
+                            <div class="scroll-reveal" style="transition-delay: 1300ms;">
+                                <p class="text-sm font-semibold text-accent-ochre">WORKSHOP: DATA VISUALIZATION</p>
+                                <h4 class="text-xl font-bold text-primary-charcoal mt-1">Tableau and PowerBI Experience</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="px-4 py-20 bg-primary-charcoal text-bg-light border-t-8 border-accent-ochre">
+        <div class="container mx-auto lg:px-16 text-center">
+            <h2 class="text-5xl font-black mb-4 tracking-tight scroll-reveal">
+                Let's Engineer a Solution.
+            </h2>
+            <p class="text-lg mb-10 max-w-2xl mx-auto text-gray-400 scroll-reveal" style="transition-delay: 100ms;">
+                I am actively seeking full-time and co-op opportunities starting now. Your next project needs a strong foundation.
+            </p>
+            <a href="mailto:tarunk1109@gmail.com" class="inline-block bg-accent-ochre text-gray-900 px-10 py-4 text-xl font-extrabold rounded hover:bg-white transition duration-300 shadow-xl scroll-reveal" style="transition-delay: 200ms;">
+                CONNECT
+            </a>
+            
+            <div class="flex justify-center space-x-6 mt-12 text-3xl scroll-reveal" style="transition-delay: 300ms;">
+                <a href="https://linkedin.com/in/tarun-karnati-84a95623b" target="_blank" class="text-white hover:text-accent-ochre transition duration-200"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/Tarunk1109" target="_blank" class="text-white hover:text-accent-ochre transition duration-200"><i class="fab fa-github"></i></a>
+            </div>
+            
+            <p class="text-xs text-gray-500 mt-10">&copy; 2025 Tarun Karnati. Designed for Detail.</p>
+        </div>
+    </footer>
+
+    <div id="project-modal" class="fixed inset-0 z-[100] hidden modal-backdrop items-center justify-center transition-opacity duration-300">
+        <div class="bg-bg-light text-text-default rounded-xl shadow-2xl p-8 w-11/12 max-w-3xl transform transition-all duration-300 scale-95 opacity-0" id="modal-content">
+            <div class="flex justify-between items-start border-b pb-4 mb-4 border-rule-line">
+                <h3 class="text-3xl font-black text-primary-charcoal">Perkpal Project Details</h3>
+                <button onclick="closeModal()" class="text-2xl text-text-default hover:text-accent-ochre focus:outline-none">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div id="perkpal-description">
+                <p class="text-lg font-bold text-accent-ochre mb-3">Perkpal – Personalized Discount & Coupon Platform</p>
+                <p class="text-text-secondary leading-relaxed mb-4">
+                    Developed a full-stack web application that delivers personalized offers and coupons tailored to communities such as students, senior citizens, LGBTQ+, and others. The platform includes user registration, login, and categorization, enabling users to discover deals across categories like fashion, electronics, entertainment, and transport.
+                </p>
+                <p class="text-text-secondary leading-relaxed mb-6">
+                    Built with HTML, CSS, JavaScript (frontend) and Java (Spring Boot), MongoDB (backend). Implemented interactive forms, user-friendly UI, and error handling features to ensure smooth functionality.
+                </p>
+                
+                <div class="border-t pt-4 border-rule-line">
+                    <p class="text-sm font-semibold text-primary-charcoal">Links & Technologies:</p>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <a href="https://github.com/Tarunk1109/PerkPal" target="_blank" class="text-xs font-medium bg-primary-charcoal text-white px-3 py-1 rounded hover:bg-accent-ochre hover:text-primary-charcoal transition duration-200">
+                            <i class="fab fa-github mr-1"></i> Repository Link
+                        </a>
+                        <span class="text-xs font-medium bg-accent-ochre text-primary-charcoal px-3 py-1 rounded">Spring Boot</span>
+                        <span class="text-xs font-medium bg-accent-ochre text-primary-charcoal px-3 py-1 rounded">MongoDB</span>
+                        <span class="text-xs font-medium bg-accent-ochre text-primary-charcoal px-3 py-1 rounded">RESTful API</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Dark Mode Logic ---
+            const toggle = document.getElementById('dark-mode-toggle');
+            const sunIcon = document.getElementById('sun-icon');
+            const moonIcon = document.getElementById('moon-icon');
+            const htmlElement = document.documentElement;
+
+            // Initialize theme based on preference or default to light
+            function applyTheme(theme) {
+                if (theme === 'dark') {
+                    htmlElement.classList.add('dark');
+                    sunIcon.classList.add('hidden');
+                    moonIcon.classList.remove('hidden');
+                } else {
+                    htmlElement.classList.remove('dark');
+                    sunIcon.classList.remove('hidden');
+                    moonIcon.classList.add('hidden');
+                }
+            }
+
+            // Load saved theme or set to light (since no dark theme was requested initially)
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                applyTheme(savedTheme);
+            } else {
+                // Default to light mode 
+                applyTheme('light');
+            }
+
+            toggle.addEventListener('click', () => {
+                const newTheme = htmlElement.classList.contains('dark') ? 'light' : 'dark';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+            });
+
+            // --- Project Modal Logic ---
+            const modal = document.getElementById('project-modal');
+            const modalContent = document.getElementById('modal-content');
+
+            window.openModal = function(projectId) {
+                if (projectId === 'perkpal') {
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                    // Force a reflow for transition to work
+                    setTimeout(() => {
+                        modal.style.opacity = '1';
+                        modalContent.style.transform = 'scale(1)';
+                        modalContent.style.opacity = '1';
+                    }, 10);
+                }
+            };
+
+            window.closeModal = function() {
+                modal.style.opacity = '0';
+                modalContent.style.transform = 'scale(0.95)';
+                modalContent.style.opacity = '0';
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }, 300); // Wait for transition to finish
+            };
+
+            // Close modal on outside click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            // Close modal on Escape key press
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('flex')) {
+                    closeModal();
+                }
+            });
+
+
+            // --- Scroll Reveal Animation ---
+            const revealElements = document.querySelectorAll('.scroll-reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { 
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px' 
+            });
+            
+            revealElements.forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight) {
+                    el.classList.add('visible');
+                } else {
+                    observer.observe(el);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
